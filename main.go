@@ -17,19 +17,21 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
 	defer db.Close()
-	// •	2 types of users (buyers, and sellers) -done
 
-	// •	User sellers can list his merchs -done
-	// •	User seller can update his merchs quantity -done
+	// •	2 types of users (buyers, and sellers)
 
-	// •	User buyers can see list of merchs done
+	// •	User sellers can list his merchs
+	// •	User seller can update his merchs quantity
+
+	// •	User buyers can see list of merchs
 	// •	User buyers can make a purchase
+
+	// these may not the best approaches but trust me ill become so handy in short amount of time
 
 	http.HandleFunc("/merchs", merch.MerchHnadler)
 	http.HandleFunc("/merchs/getMerchsByUserId", merch.GetMerchsByUserId)
 	http.HandleFunc("/merchs/updateMerch/", merch.UpdateMerchById) // idk how to use it without third party app :D /merchs/updateMerch/{merch_id}
-	http.HandleFunc("/merchs/purchase", user.MakePurchase)
+	http.HandleFunc("/merchs/purchase", user.MakePurchase)         // goroutine implenetation here
 	http.ListenAndServe(":8080", nil)
 }
