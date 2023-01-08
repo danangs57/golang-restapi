@@ -61,12 +61,14 @@ func MakePurchase(w http.ResponseWriter, r *http.Request) {
 		}
 
 		conf.Db.Exec("INSERT INTO user_purchase (merch_id, quantity, status, purchase_id) VALUES (?, ? ,? ,?)", data.MerchId, data.Quantity, data.Status, lastID)
-
+		done := make(chan bool)
 		// update stock/quantity
 		go func(data PurchaseDetail) {
-			conf.Db.Exec("UPDATE merchs SET quantity = quantity - ? WHERE id = ?", data.Quantity, data.MerchId)
-		}(data)
 
+			conf.Db.Exec("UPDATE merchs SET quantity = quantity - ? WHERE id = ?", data.Quantity, data.MerchId)
+			done <- true
+		}(data)
+		<-done
 	}
 
 	w.WriteHeader(http.StatusCreated)
