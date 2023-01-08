@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "a7d39642-af76-4394-9e97-e4c4c2db86cb",
+		"name": "Golang Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17984816"
+	},
+	"item": [
+		{
+			"name": "Get Merch By Seller Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/merchs/getMerchsByUserId?seller_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"merchs",
+						"getMerchsByUserId"
+					],
+					"query": [
+						{
+							"key": "seller_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Merch",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create Merch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/merchs/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"merchs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Merch",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Majin Boo\",\r\n    \"quantity\": 55\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/merchs/updateMerch/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"merchs",
+						"updateMerch",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchasing",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seller_id\": 1,\r\n    \"buyer_id\": 2,\r\n    \"purchase_data\": [\r\n        {\r\n            \"merch_id\": 7,\r\n            \"quantity\": 3,\r\n            \"status\": 0,\r\n            \"purchase_id\": 1\r\n        },\r\n        {\r\n            \"merch_id\": 8,\r\n            \"quantity\": 2,\r\n            \"status\": 0,\r\n            \"purchase_id\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/merchs/purchase",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"merchs",
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
